@@ -1,0 +1,7 @@
+package: newtonsoft.json
+repo: https://api.nuget.org/v3/index.json
+test_mode: false
+version: "13.0.3"
+output: deps.png
+max_depth: 5
+filter: ""
