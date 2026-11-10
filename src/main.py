@@ -42,22 +42,22 @@ def _make_fetch(cfg, test_graph, root_ver):
     if test_graph is not None:
         return lambda pkg: _fetch_from_test(test_graph, pkg)
 
-    # Для следующих уровней версию берём из возвращённого spec,
-    # для корня — из конфига.
+    """ Для следующих уровней версию берём из возвращённого spec, """
+    """ для корня — из конфига. """
     root_key = cfg["package"].lower()
 
     def fetch(pkg):
         if pkg.lower() == root_key:
             ver = root_ver
         else:
-            # при первом обращении ещё нет spec — увидим ниже через кеш
+            """ при первом обращении ещё нет spec — увидим ниже через кеш """
             ver = _KNOWN_VERSIONS.get(pkg.lower(), "")
         return _fetch_from_nuget(cfg, pkg, ver)
 
     return fetch
 
 
-# кеш версий, заполняется по мере обхода (ниже, в fetch wrapper’е)
+""" кеш версий, заполняется по мере обхода (ниже, в fetch wrapper’е) """
 _KNOWN_VERSIONS = {}
 
 

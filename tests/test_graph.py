@@ -23,7 +23,7 @@ def test_cycle_terminates():
     g = {"A": ["B"], "B": ["C"], "C": ["A"]}
     nodes, edges = build_graph(make_fetch(g), "A", max_depth=10, flt="")
     assert set(nodes) == {"a", "b", "c"}
-    assert ("c", "a") not in edges   # обратное ребро в корень не добавляем
+    assert ("c", "a") not in edges  """ обратное ребро в корень не добавляем """
 
 
 def test_filter():
@@ -39,6 +39,6 @@ def test_diamond_visited_once():
 
 
 def test_testrepo_read(tmp_path=None):
-    # можно не использовать tmp_path, а положить файл-фикстуру рядом
+    """можно не использовать tmp_path, а положить файл-фикстуру рядом"""
     g = read_edges("tests/fixtures/linear.txt")
     assert g == {"A": ["B"], "B": ["C"], "C": ["D"], "D": []}

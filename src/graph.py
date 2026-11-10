@@ -24,8 +24,8 @@ def build_graph(fetch, root, max_depth, flt):
     visited = {root_key}
 
     def bfs_recursive(frontier, depth):
-        # depth — сколько рёбер уже пройдено до текущего уровня.
-        # Раскрываем frontier, только если ещё есть куда идти.
+        """ depth — сколько рёбер уже пройдено до текущего уровня."""
+        """ Раскрываем frontier, только если ещё есть куда идти. """
         if depth >= max_depth or not frontier:
             return
         next_frontier = []
@@ -40,7 +40,7 @@ def build_graph(fetch, root, max_depth, flt):
                 nodes[child_key] = child_id
                 edges.append((key, child_key))
                 next_frontier.append((child_key, child_id))
-        # РЕКУРСИЯ: следующий уровень
+        """ РЕКУРСИЯ: следующий уровень """
         bfs_recursive(next_frontier, depth + 1)
 
     bfs_recursive([(root_key, root)], depth=0)

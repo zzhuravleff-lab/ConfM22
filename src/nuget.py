@@ -34,7 +34,7 @@ def _parse_nuspec(xml_bytes):
     """Возвращает список (id, version) прямых зависимостей из .nuspec."""
     root = ET.fromstring(xml_bytes)
     deps = []
-    # Пространства имён в nuspec бывают и с префиксом, и без — обходим локально.
+    """ Пространства имён в nuspec бывают и с префиксом, и без — обходим локально. """
     for dep in root.iter():
         if dep.tag.split("}")[-1] != "dependency":
             continue
@@ -42,7 +42,7 @@ def _parse_nuspec(xml_bytes):
         dep_ver = dep.get("version", "")
         if dep_id:
             deps.append((dep_id, dep_ver))
-    # Убираем дубликаты, сохраняя порядок.
+    """ Убираем дубликаты, сохраняя порядок. """
     seen = set()
     out = []
     for d in deps:
