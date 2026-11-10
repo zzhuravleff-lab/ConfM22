@@ -1,5 +1,5 @@
 package: A
-repo: test_cycle.txt
+repo: test_all.txt
 test_mode: true
 version: "1.0.0"
 output: deps.png
